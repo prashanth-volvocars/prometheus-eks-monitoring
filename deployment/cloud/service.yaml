@@ -1,13 +1,13 @@
 apiVersion: v1
 kind: Service
 metadata:
-  name: actions-to-eks-sample-service
+  name: prometheus-eks-monitoring-sample-service
   namespace: default
   labels:
-    app: actions-to-eks-sample-app
+    app: prometheus-eks-monitoring-sample-app
 spec:
   selector:
-    app: actions-to-eks-sample-app
+    app: prometheus-eks-monitoring-sample-app
   ports:
     - protocol: TCP
       port: 80

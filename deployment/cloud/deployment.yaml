@@ -1,19 +1,19 @@
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  name: actions-to-eks-deployment
+  name: prometheus-eks-monitoring-deployment
   namespace: default
   labels:
-    app: actions-to-eks-sample-app
+    app: prometheus-eks-monitoring-sample-app
 spec:
   replicas: 1
   selector:
     matchLabels:
-      app: actions-to-eks-sample-app
+      app: prometheus-eks-monitoring-sample-app
   template:
     metadata:
       labels:
-        app: actions-to-eks-sample-app
+        app: prometheus-eks-monitoring-sample-app
       annotations:
         prometheus.io/scrape: "true"
         prometheus.io/port: "3000"
@@ -29,8 +29,8 @@ spec:
                 - amd64
                 - arm64
       containers:
-      - name: actions-to-eks
-        image: ghcr.io/prashanth-volvocars/actions-to-eks:${COMMIT}
+      - name: prometheus-eks-monitoring
+        image: ghcr.io/prashanth-volvocars/prometheus-eks-monitoring:${COMMIT}
         ports:
         - name: http
           containerPort: 3000
